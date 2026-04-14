@@ -14,7 +14,7 @@ import signupRoutes from './routes/signup.route.js'
 app.use("/users",homeRoutes)
 app.use("/signup",signupRoutes)
 
-const PORT = 2000
+const PORT = process.env.PORT
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`)
 })
