@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Container, Table, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../api";
 
 const List = () => {
     const [taskData, setTaskData] = useState([])
@@ -17,7 +18,8 @@ const List = () => {
     const getListData = async () => {
         try {
 
-            let data = await fetch('http://localhost:2000/users')
+            // let data = await fetch('http://localhost:2000/users')
+            let data = await fetch(`${API_URL}/users`)
 
             data = await data.json()
 
@@ -36,7 +38,8 @@ const List = () => {
 
     //delete the data
     const deleteTask = async (id) => {
-        let res = await fetch(`http://localhost:2000/users/${id}`, {
+        // let res = await fetch(`http://localhost:2000/users/${id}`, {
+        let res = await fetch(`${API_URL}/users/${id}`, {
             method: 'DELETE'
         });
 
@@ -81,7 +84,8 @@ const List = () => {
     const deleteMultiple = async () => {
         console.log("selected task", selectedTask);
          const cleanIds = selectedTask.filter(id => id && id.trim() !== "");
-        let res = await fetch(`http://localhost:2000/users/delete-multiple`, {
+        // let res = await fetch(`http://localhost:2000/users/delete-multiple`, {
+        let res = await fetch(`${API_URL}/users/delete-multiple`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

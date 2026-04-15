@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button, Form, Card, Container } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom'
+import API_URL from '../api';
 const AddTask = () => {
     const [taskData, setTaskData] = useState({
         title: "",
@@ -21,7 +22,8 @@ const AddTask = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let result = await fetch(('http://localhost:2000/users'), {
+        // let result = await fetch(('http://localhost:2000/users'), {
+        let result = await fetch((`${API_URL}/users`), {
             method: 'Post',
             body: JSON.stringify(taskData),
             headers: {
@@ -43,7 +45,8 @@ const AddTask = () => {
 
         console.log("edit data", editData)
         console.log("task data", taskData.id)
-        let res = await fetch(`http://localhost:2000/users/${taskData.id}`, {
+        // let res = await fetch(`http://localhost:2000/users/${taskData.id}`, {
+        let res = await fetch(`${API_URL}/users/${taskData.id}`, {
             method: 'PUT',
             body: JSON.stringify(taskData),   
             headers: {

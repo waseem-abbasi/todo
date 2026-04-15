@@ -6,6 +6,7 @@ import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import API_URL from '../api';
 const Login = () => {
     const navigate = useNavigate()
     const [loginData, setLoginData] = useState()
@@ -20,7 +21,8 @@ const Login = () => {
 
         console.log("login data", loginData);
 
-        let result = await fetch('http://localhost:2000/signup/login', {
+        // let result = await fetch('http://localhost:2000/signup/login', {
+        let result = await fetch(`${API_URL}/signup/login`, {
             method: 'POST',
             body: JSON.stringify(loginData),
             headers: {

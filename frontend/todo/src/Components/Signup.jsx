@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { useNavigate, useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import API_URL from '../api';
 
 const Signup = () => {
     const navigate = useNavigate()
@@ -18,7 +19,8 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("userdata--->",userData)
-        let result = await fetch(('http://localhost:2000/signup'), {
+        // let result = await fetch(('http://localhost:2000/signup'), {
+        let result = await fetch((`${API_URL}/signup`), {
             method: 'Post',
             body: JSON.stringify(userData),
             headers: {
