@@ -7,11 +7,15 @@ const app = express();
 app.use(express.json())
 app.use(cors());
 
-import homeRoutes from './routes/task.routes.js'
-import signupRoutes from './routes/signup.route.js'
+import homeRoutes from '../routes/task.routes.js'
+import signupRoutes from '../routes/signup.route.js'
 
 app.use("/users", homeRoutes)
 app.use("/signup", signupRoutes)
+
+app.get("/", (req, res) => {
+  res.send("API is running 🚀");
+});
 
 // ✅ FOR VERCEL: Export the app directly (NO app.listen)
 export default app;
