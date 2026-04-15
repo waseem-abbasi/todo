@@ -17,7 +17,6 @@ const List = () => {
     //fetch the data
     const getListData = async () => {
         try {
-
             // let data = await fetch('http://localhost:2000/users')
             let data = await fetch(`${API_URL}/users`)
 

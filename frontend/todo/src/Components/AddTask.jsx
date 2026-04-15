@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button, Form, Card, Container } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom'
-import API_URL from '../api';
+import API_URL from '../api.js';
 const AddTask = () => {
     const [taskData, setTaskData] = useState({
         title: "",
@@ -27,7 +27,7 @@ const AddTask = () => {
             method: 'Post',
             body: JSON.stringify(taskData),
             headers: {
-                'Content-Type': 'Application/Json'
+                'Content-Type': 'application/Json'
             }
         })
         result = await result.json()

@@ -5,13 +5,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json())
-app.use(cors({
-  origin: [
-    "http://localhost:5173",   // local vite
-    "https://todoprectise.netlify.app"
-  ],
-  credentials: true
-}));
+app.use(cors());
 
 import homeRoutes from './routes/task.routes.js'
 import signupRoutes from './routes/signup.route.js'
@@ -23,6 +17,9 @@ app.get("/", (req, res) => {
   res.send("API is running ");
 });
 
+app.get("/test", (req, res) => {
+  res.send("test working");
+});
 // FOR VERCEL: Export the app directly (NO app.listen)
 export default app;
 
