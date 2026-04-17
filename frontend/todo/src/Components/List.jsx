@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { Container, Table, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import API_URL from "../api";
+import { MdDelete } from "react-icons/md";
+import { MdOutlineSystemUpdateAlt } from "react-icons/md";
 
 const List = () => {
     const [taskData, setTaskData] = useState([])
@@ -125,8 +127,13 @@ const List = () => {
                                     <th>{index + 1}</th>
                                     <th>{item.title}</th>
                                     <th>{item.description}</th>
-                                    <th><Button variant="danger" onClick={() => deleteTask(item.id)}>Delete</Button></th>
-                                    <th><Button variant="primary" onClick={() => updateTask(item)}>Update</Button></th>
+                                    <th className="d-flex justify-content-center ">
+                                        <MdDelete className="text-danger  fs-2" onClick={() => deleteTask(item.id)} />
+                                        <MdOutlineSystemUpdateAlt className="text-info fs-2" onClick={() => updateTask(item)}/>
+                                        
+                                    {/* <Button >Delete</Button> */}
+                                    </th>
+                                    {/* <th><Button variant="primary" onClick={() => updateTask(item)}>Update</Button></th> */}
                                 </tr>
                             ))
                         }

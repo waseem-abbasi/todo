@@ -9,7 +9,7 @@ const dbConfig = {
     // DB: process.env.DB_NAME || "todo",
     
     // Neon specific - connection string direct use करने के लिए
-    DATABASE_URL: process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_zCEsi4SR8YPX@ep-old-mountain-an3xczoq-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require',
+    DATABASE_URL: process.env.DATABASE_URL ,
     
     
     // Neon के लिए SSL required hai
