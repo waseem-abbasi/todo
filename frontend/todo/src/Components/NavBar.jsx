@@ -11,7 +11,7 @@ const NavBar = () => {
         localStorage.removeItem("user");
 
 
-        navigate("/login");
+        navigate("/");
     };
     return (
         <>
@@ -21,7 +21,7 @@ const NavBar = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse className='justify-content-end'>
                         <Nav className="">
-                            <Nav.Link as={Link} to="/">List</Nav.Link>
+                            <Nav.Link as={Link} to="/list">List</Nav.Link>
                             <Nav.Link as={Link} to="/add">Add Task</Nav.Link>
                             <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                         </Nav>

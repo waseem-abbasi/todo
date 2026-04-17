@@ -2,9 +2,9 @@ import express from 'express';
 const router = express.Router();
 
 import createtask from '../models/task.model.js';
-
+import authentication from '../middleware/middleware.user.js';
 // create task
-router.post("/", async (req, res) => {
+router.post("/",authentication, async (req, res) => {
     try {
         const { title, description } = req.body;
 

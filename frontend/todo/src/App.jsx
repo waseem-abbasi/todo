@@ -19,9 +19,9 @@ function App() {
     <>
       <NavBar/>
       <Routes>
-        <Route path='/' element={<List/>}></Route>
+        <Route path='/list' element={<List/>}></Route>
         <Route path='/signup' element={<Signup/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/' element={<Login/>}></Route>
         <Route path='/add' element={<AddTask />}></Route>
       </Routes>
       <ToastContainer />
