@@ -11,19 +11,42 @@ import Signup from './Components/Signup'
 import Login from './Components/Login'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ProtectedRoute from './Components/prodectedRoute.jsx';
+import { useLocation } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+   const location = useLocation();
+    const hideNavbarRoutes = ["/", "/signup"];
   return (
     <>
-      <NavBar/>
+     {!hideNavbarRoutes.includes(location.pathname) && <NavBar />}
+
       <Routes>
-        <Route path='/list' element={<List/>}></Route>
-        <Route path='/signup' element={<Signup/>}></Route>
+        {/* Public Routes */}
         <Route path='/' element={<Login/>}></Route>
-        <Route path='/add' element={<AddTask />}></Route>
+        <Route path='/signup' element={<Signup/>}></Route>
+
+        {/* Protected Routes */}
+        <Route 
+          path='/list' 
+          element={
+            <ProtectedRoute>
+              <List/>
+            </ProtectedRoute>
+          } 
+        />
+
+        <Route 
+          path='/add' 
+          element={
+            <ProtectedRoute>
+              <AddTask/>
+            </ProtectedRoute>
+          } 
+        />
+
       </Routes>
+
       <ToastContainer />
     </>
   )

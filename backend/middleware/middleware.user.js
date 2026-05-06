@@ -5,7 +5,6 @@ const JWT_SECRET = "mySuperSecretKey";
 const authentication = (req, res, next) => {
     try {
         const authHeader = req.headers['authorization'];
-
         console.log("authheader",authHeader)
         // 1. Token check
         if (!authHeader) {
@@ -14,7 +13,6 @@ const authentication = (req, res, next) => {
                 message: "No token, access denied"
             });
         }
-
         // 2. Format: Bearer TOKEN
         const token = authHeader.split(" ")[1];
         console.log("token-->",token)

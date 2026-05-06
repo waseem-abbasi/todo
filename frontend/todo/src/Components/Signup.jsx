@@ -30,7 +30,7 @@ const Signup = () => {
         result = await result.json()
         if (result) {
            toast.success("user create successfully")
-            navigate("/login")
+            navigate("/")
         }
         else {
             console.log("error print")
@@ -67,7 +67,7 @@ const Signup = () => {
                         Submit
                     </Button>
                     <div>
-                        <Link to="/login">Login</Link>
+                        <Link to="/">Login</Link>
                     </div>
                 </Form>
             </Container>

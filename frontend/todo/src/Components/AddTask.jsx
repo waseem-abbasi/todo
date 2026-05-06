@@ -13,7 +13,6 @@ const AddTask = () => {
 
   const token = localStorage.getItem("token");
   useEffect(() => {
-
     if (!token) {
         console.log("token not available")
       navigate("/");
@@ -41,7 +40,7 @@ const AddTask = () => {
     result = await result.json();
     if (result) {
       console.log("task data is", taskData);
-      navigate("/");
+      navigate("/list");
     } else {
       console.log("error print");
     }
