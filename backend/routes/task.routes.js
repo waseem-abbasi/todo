@@ -35,6 +35,7 @@ router.get("/", authentication,async (req, res) => {
     try {
         const task = await createtask.getAll()
         console.log("taskes-->>", task)
+        console.log("workig.....")
         res.json(task)
     } catch (err) {
         res.status(500).json({ error: "Server error: " + err.message });
@@ -42,7 +43,7 @@ router.get("/", authentication,async (req, res) => {
 
 })
 //multiple delete
-router.delete("/delete-multiple", authentication,async (req, res) => {
+router.delete("/delete-multiple", async (req, res) => {
     try {
         const { ids } = req.body;   // expect: { ids: [1,2,3] }
 
@@ -72,7 +73,7 @@ router.delete("/delete-multiple", authentication,async (req, res) => {
     }
 });
 //delete task
-router.delete("/:id",authentication, async (req, res) => {
+router.delete("/:id", async (req, res) => {
     const { id } = req.params;
     console.log("delete id", id)
     try {
@@ -99,7 +100,7 @@ router.delete("/:id",authentication, async (req, res) => {
 })
 
 //update task by id
-router.put("/:id",authentication, (req, res) => {
+router.put("/:id", (req, res) => {
     const { id } = req.params;
     const { title, description } = req.body;
 

@@ -26,9 +26,18 @@ const List = () => {
   //fetch the data
   const getListData = async () => {
     try {
-      // let data = await fetch('http://localhost:2000/users')
-      let data = await fetch(`${API_URL}/users`);
+      const token = localStorage.getItem("token");
 
+      // let data = await fetch('http://localhost:2000/users')
+      // let data = await fetch(`${API_URL}/users`);
+      let data = await fetch(`${API_URL}/users`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("data", data);
       data = await data.json();
 
       if (data) {
@@ -43,9 +52,14 @@ const List = () => {
 
   //delete the data
   const deleteTask = async (id) => {
+    const token = localStorage.getItem("token");
     // let res = await fetch(`http://localhost:2000/users/${id}`, {
     let res = await fetch(`${API_URL}/users/${id}`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     let data = await res.json();
@@ -57,6 +71,7 @@ const List = () => {
   };
   //update the data
   const updateTask = async (item) => {
+     
     console.log("items", item);
     navigate("/add", { state: item });
   };

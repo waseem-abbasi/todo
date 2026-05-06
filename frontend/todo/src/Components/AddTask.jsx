@@ -28,6 +28,7 @@ const AddTask = () => {
   }, [editData]);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
     // let result = await fetch(('http://localhost:2000/users'), {
     let result = await fetch(`${API_URL}/users`, {
       method: "Post",
@@ -48,7 +49,7 @@ const AddTask = () => {
   //update value
   const hanldeUpdate = async (e) => {
     e.preventDefault();
-
+    const token = localStorage.getItem("token");
     console.log("edit data", editData);
     console.log("task data", taskData.id);
     // let res = await fetch(`http://localhost:2000/users/${taskData.id}`, {
@@ -57,11 +58,12 @@ const AddTask = () => {
       body: JSON.stringify(taskData),
       headers: {
         "Content-Type": "application/json",
+         Authorization: `Bearer ${token}`,
       },
     });
     let data = await res.json();
     if (data) {
-      navigate("/");
+      navigate("/list");
     }
   };
   return (
